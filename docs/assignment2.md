@@ -204,4 +204,42 @@ We separated the paths into 8 student paths and 8 non-student paths. Each path b
 | P15 | A → B → R → Z → AD → AE → AG → AH | AE |
 | P16 | A → B → R → Z → AD → AF → AG → AH | AF |
 
-In this case, the 16 paths cover all the branches in the CFG. We will use these paths to create our Transfer test cases.
+In this case, the 16 paths cover all the branches in the CFG. 
+
+### 5. Transfer Test Cases
+
+In this case, we created 16 test cases based on the independent basis paths identified in Section 4. Each test case follows a different path in the CFG and uses input values that satisfy the corresponding conditions. (In this case, the expected fees are calculated using the Assignment 2 specifications rather than the Java implementation)
+
+**Expected Fee = Amount × (Fee Percentage / 100)**
+
+#### 5a. Student Test Cases (TC1–TC8)
+
+| Test Case | Basis Path | Student | Amount ($) | From Balance ($) | To Balance ($) | Expected Fee (%) | Expected Fee ($) |
+|---|---|---|---|---|---|---|---|
+| TC1 | P1 | True | 50 | 675 | 825 | 0.1% | 0.05 |
+| TC2 | P2 | True | 50 | 550 | 1350 | 0.05% | 0.025 |
+| TC3 | P3 | True | 75 | 1875 | 925 | 0.5% | 0.375 |
+| TC4 | P4 | True | 50 | 2450 | 1575 | 0.25% | 0.125 |
+| TC5 | P5 | True | 100 | 725 | 850 | 0.05% | 0.05 |
+| TC6 | P6 | True | 200 | 925 | 1000 | 0.025% | 0.05 |
+| TC7 | P7 | True | 200 | 1000 | 575 | 0.25% | 0.50 |
+| TC8 | P8 | True | 400 | 1750 | 2200 | 0.125% | 0.50 |
+
+#### 5b. Non-Student Test Cases (TC9–TC16)
+
+| Test Case | Basis Path | Student | Amount ($) | From Balance ($) | To Balance ($) | Expected Fee (%) | Expected Fee ($) |
+|---|---|---|---|---|---|---|---|
+| TC9 | P9 | False | 75 | 925 | 425 | 0.2% | 0.15 |
+| TC10 | P10 | False | 50 | 700 | 1425 | 0.1% | 0.05 |
+| TC11 | P11 | False | 75 | 1925 | 850 | 1% | 0.75 |
+| TC12 | P12 | False | 50 | 1650 | 2075 | 0.5% | 0.25 |
+| TC13 | P13 | False | 100 | 525 | 800 | 0.1% | 0.10 |
+| TC14 | P14 | False | 200 | 850 | 1300 | 0.05% | 0.10 |
+| TC15 | P15 | False | 300 | 1550 | 675 | 0.5% | 1.50 |
+| TC16 | P16 | False | 200 | 2025 | 1450 | 0.25% | 0.50 |
+
+#### 5c. Test Case Coverage
+
+In this case, each test case corresponds to one of the 16 independent basis paths. TC1–TC8 cover the student paths, while TC9–TC16 cover the non-student paths.
+
+The test cases cover both outcomes of the amount, sending balance, and receiving balance conditions. This allows us to test all the branches identified in the CFG.
