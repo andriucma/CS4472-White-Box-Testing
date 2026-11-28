@@ -15,7 +15,7 @@ For this analysis, we consider the following:
 
 #### 2a. Numbered Code
 
-The following code shows the `calculateTransferFee()` method with line numbers.
+The following code shows the `calculateTransferFee()` method with line numbers:
 
 ```text
 01 | public double calculateTransferFee(double amount, double fromAccountBalance, double toAccountBalance, boolean student) {
@@ -93,7 +93,7 @@ The following code shows the `calculateTransferFee()` method with line numbers.
 
 #### 2b. Grouped Blocks
 
-In this case, we grouped the code statements into blocks A–AH.
+In this case, we grouped the code statements into blocks A–AH:
 
 **Starting Block**
 
@@ -156,17 +156,15 @@ AH = Line 70
 
 #### 2c. Control Flow Graph
 
-In this case, the CFG shows the different paths that the transfer method can follow. Each decision has a Yes or No branch, which leads to a fee assignment based on the conditions.
+Below is the CFG, which shows the different paths that the transfer method can follow
 
 ![Transfer Control Flow Graph](images/Transfer--CFG.png)
 
 ### 3. Cyclomatic Complexity
 
-In this case, the `calculateTransferFee()` method has 15 decision blocks. We can use the following formula to calculate the Cyclomatic Complexity:
+In this case, the `calculateTransferFee()` method has 15 decision blocks (P). We can use the following formula to calculate the Cyclomatic Complexity:
 
 **V(G) = P + 1**
-
-Where P is the number of decision blocks.
 
 **V(G) = 15 + 1 = 16**
 
@@ -174,9 +172,7 @@ Therefore, the Cyclomatic Complexity is **16**, meaning we need 16 independent b
 
 ### 4. Basis Paths
 
-In this case, we used the CFG to identify the 16 independent basis paths. Each path follows a different combination of conditions and leads to a fee assignment.
-
-We separated the paths into 8 student paths and 8 non-student paths. Each path begins at A and ends at AH, following the grouped code statements.
+In this case, in the CFG, we separated the paths into 8 student paths and 8 non-student paths. following the grouped code statements, so we consider the following below:
 
 **Student Basis Paths (P1–P8)**
 
@@ -204,11 +200,9 @@ We separated the paths into 8 student paths and 8 non-student paths. Each path b
 | P15 | A → B → R → Z → AD → AE → AG → AH | AE |
 | P16 | A → B → R → Z → AD → AF → AG → AH | AF |
 
-In this case, the 16 paths cover all the branches in the CFG. 
-
 ### 5. Transfer Test Cases
 
-In this case, we created 16 test cases based on the independent basis paths identified in Section 4. Each test case follows a different path in the CFG and uses input values that satisfy the corresponding conditions. (In this case, the expected fees are calculated using the Assignment 2 specifications rather than the Java implementation)
+In this case, we created 16 test cases based on the independent basis paths identified in Section 4. Each test case follows a different path in the CFG and uses input values that satisfy the corresponding conditions. (In this case, the expected fees are calculated using the Assignment 2 specifications rather than the Java implementation), we can then consider the following below:
 
 **Expected Fee = Amount × (Fee Percentage / 100)**
 
@@ -237,9 +231,3 @@ In this case, we created 16 test cases based on the independent basis paths iden
 | TC14 | P14 | False | 200 | 850 | 1300 | 0.05% | 0.10 |
 | TC15 | P15 | False | 300 | 1550 | 675 | 0.5% | 1.50 |
 | TC16 | P16 | False | 200 | 2025 | 1450 | 0.25% | 0.50 |
-
-#### 5c. Test Case Coverage
-
-In this case, each test case corresponds to one of the 16 independent basis paths. TC1–TC8 cover the student paths, while TC9–TC16 cover the non-student paths.
-
-The test cases cover both outcomes of the amount, sending balance, and receiving balance conditions. This allows us to test all the branches identified in the CFG.
